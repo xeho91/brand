@@ -1,0 +1,72 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"type": "module",
+	"name": "@xeho91/fonts",
+	"version": "0.0.0",
+	"description": "@xeho91' brand fonts.",
+	"keywords": [
+		"brand",
+		"fonts"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Mateusz Kadlubowski",
+		"email": "xeho91@pm.me",
+		"url": "https://xeho91.com"
+	},
+	"homepage": "https://github.com/xeho91/brand",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xeho91/brand.git",
+		"directory": "packages/fonts"
+	},
+	"bugs": "https://github.com/xeho91/brand/issues",
+	"engines": {
+		"node": ">=18"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js",
+			"require": "./dist/main.cjs"
+		},
+		"./*": {
+			"types": "./dist/*/*.d.ts",
+			"import": "./dist/*/*.js",
+			"require": "./dist/*/*.cjs"
+		}
+	},
+	"files": [
+		"dist/"
+	],
+	"scripts": {
+		"build": "tsup",
+		"clean": "concurrently \"pnpm:clean:*\" --group --timings",
+		"clean:build": "del \"./dist\"",
+		"clean:cache": "del \"./node_modules/.cache\"",
+		"clean:test": "del \"./coverage\"",
+		"dev:test": "vitest watch --ui",
+		"dev:pkg": "tsup --watch",
+		"fix": "concurrently \"pnpm:fix:*\" --group --timings",
+		"fix:format": "pretty-quick --branch main --pattern \"packages/fonts/**/*\" --verbose",
+		"fix:js": "pnpm lint:js --fix",
+		"fix:md": "pnpm lint:md --fix",
+		"fix:pkg": "syncpack format ; syncpack fix-mismatches",
+		"lint": "concurrently \"pnpm:lint:*\" --group --timings",
+		"lint:deps": "depcheck",
+		"lint:format": "pnpm fix:format --check",
+		"lint:js": "DEBUG=\"eslint:cli-engine\" eslint . --ext .cjs,.js,.ts,.json,.yml --cache --cache-location \"./node_modules/.cache/eslint\"",
+		"lint:md": "markdownlint . --config \"../../.markdownlint.json\" --dot --ignore \"./LICENSE.md\" --ignore-path \"../../.gitignore\"",
+		"lint:pkg": "syncpack list-mismatches",
+		"lint:types": "tsc --noEmit",
+		"test:unit": "vitest run --dir \"./source\""
+	},
+	"peerDependencies": {
+		"typescript": "5.0.4"
+	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
+	}
+}
