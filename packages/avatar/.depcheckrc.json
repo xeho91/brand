@@ -1,3 +1,0 @@
-{
-	"ignores": ["@terminal-nerds/*-config", "tsup", "vitest"]
-}

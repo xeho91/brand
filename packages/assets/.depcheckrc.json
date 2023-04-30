@@ -1,0 +1,11 @@
+{
+	"ignores": [
+		"@storybook/*",
+		"@sveltejs/package",
+		"@terminal-nerds/*-config",
+		"storybook-dark-mode",
+		"typescript-svelte-plugin",
+		"tsup",
+		"vitest"
+	]
+}

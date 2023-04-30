@@ -1,11 +1,14 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
-	"name": "@xeho91/logo",
+	"name": "@xeho91/assets",
 	"version": "0.0.0",
-	"description": "@xeho91' brand logo.",
+	"description": "@xeho91' brand assets.",
 	"keywords": [
 		"brand",
+		"assets",
+		"avatar",
+		"favicon",
 		"logo"
 	],
 	"license": "MIT",
@@ -18,7 +21,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/xeho91/brand.git",
-		"directory": "packages/logo"
+		"directory": "packages/assets"
 	},
 	"bugs": "https://github.com/xeho91/brand/issues",
 	"engines": {
@@ -40,24 +43,26 @@
 		"dist/"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build:pkg": "tsup",
 		"clean": "concurrently \"pnpm:clean:*\" --group --timings",
 		"clean:build": "del \"./dist\"",
 		"clean:cache": "del \"./node_modules/.cache\"",
 		"clean:test": "del \"./coverage\"",
-		"dev:test": "vitest watch --ui",
 		"dev:pkg": "tsup --watch",
+		"dev:test": "vitest watch --ui",
+		"dev:sb": "storybook dev --port 6006",
 		"fix": "concurrently \"pnpm:fix:*\" --group --timings",
-		"fix:format": "pretty-quick --branch main --pattern \"packages/logo/**/*\" --verbose",
+		"fix:format": "pretty-quick --branch main --pattern \"packages/assets/**/*\" --verbose",
 		"fix:js": "pnpm lint:js --fix",
 		"fix:md": "pnpm lint:md --fix",
 		"fix:pkg": "syncpack format ; syncpack fix-mismatches",
 		"lint": "concurrently \"pnpm:lint:*\" --group --timings",
 		"lint:deps": "depcheck",
 		"lint:format": "pnpm fix:format --check",
-		"lint:js": "DEBUG=\"eslint:cli-engine\" eslint . --ext .cjs,.js,.ts,.json,.yml --cache --cache-location \"./node_modules/.cache/eslint\"",
+		"lint:js": "DEBUG=\"eslint:cli-engine\" eslint . --ext .cjs,.js,.ts,.json,.svelte,.yml --cache --cache-location \"./node_modules/.cache/eslint\"",
 		"lint:md": "markdownlint . --config \"../../.markdownlint.json\" --dot --ignore \"./LICENSE.md\" --ignore-path \"../../.gitignore\"",
 		"lint:pkg": "syncpack list-mismatches",
+		"lint:svelte": "svelte-check",
 		"lint:types": "tsc --noEmit",
 		"test:unit": "vitest run --dir \"./source\""
 	},
@@ -68,5 +73,34 @@
 		"typescript": {
 			"optional": true
 		}
+	},
+	"dependencies": {
+		"@xeho91/colors": "workspace:*",
+		"chroma-js": "2.4.2",
+		"svelte": "3.58.0",
+		"zod": "3.21.4"
+	},
+	"devDependencies": {
+		"@storybook/addon-a11y": "7.0.7",
+		"@storybook/addon-essentials": "7.0.7",
+		"@storybook/addon-interactions": "7.0.7",
+		"@storybook/addon-links": "7.0.7",
+		"@storybook/addon-styling": "1.0.5",
+		"@storybook/blocks": "7.0.7",
+		"@storybook/svelte": "7.0.7",
+		"@storybook/svelte-vite": "7.0.7",
+		"@storybook/testing-library": "0.1.0",
+		"@sveltejs/package": "2.0.2",
+		"@sveltejs/vite-plugin-svelte": "2.1.1",
+		"@types/chroma-js": "2.4.0",
+		"@xeho91/storybook": "workspace:*",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"storybook": "7.0.7",
+		"storybook-dark-mode": "3.0.0",
+		"svelte-check": "3.2.0",
+		"svelte-preprocess": "5.0.3",
+		"typescript-svelte-plugin": "0.3.22",
+		"vite": "4.3.3"
 	}
 }
