@@ -1,5 +1,5 @@
 # Dependencies
-/node_modules
+node_modules/
 
 # Tests
 /coverage
@@ -23,3 +23,9 @@ yarn-error.log*
 
 # Turbo cache
 .turbo
+
+# Build output
+dist/
+
+# Storybook output
+storybook-static/
