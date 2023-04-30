@@ -92,7 +92,7 @@ importers:
   packages/colors:
     dependencies:
       chroma-js:
-        specifier: ^2.4.2
+        specifier: 2.4.2
         version: 2.4.2
       zod:
         specifier: 3.21.4
