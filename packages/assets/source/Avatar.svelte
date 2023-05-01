@@ -12,7 +12,6 @@
 
 	/**
 	 * Unique ID of the avatar.
-	 *
 	 * @type {string}
 	 */
 	export let id: string = META_AVATAR.id;
@@ -39,7 +38,7 @@
 	/**
 	 * Display frame?
 	 */
-	export let useFrame = false;
+	export let useFrame = true;
 
 	const dimensions = [100, 100] as const;
 </script>
