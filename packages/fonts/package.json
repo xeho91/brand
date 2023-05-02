@@ -68,5 +68,9 @@
 		"typescript": {
 			"optional": true
 		}
+	},
+	"dependencies": {
+		"@terminal-nerds/snippets-string": "0.3.0",
+		"zod": "3.21.4"
 	}
 }
